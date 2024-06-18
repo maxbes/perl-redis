@@ -1373,12 +1373,31 @@ using the sentinels feature, the Redis client will wait at most that number of
 seconds (can be fractional) before giving up when reading from a sentinel
 server. B<Default>: 1
 
+=head3 C<< username >>
+
+If your Redis server requires authentication, you can optionally use the 
+C<< username >> attribute. After each established connection (at the start or 
+when reconnecting), the Redis C<< AUTH >> command will be send to the server. 
+If the username/password combination is wrong, an exception will be thrown and 
+reconnect will be disabled.
+
+=head3 C<< sentinels_username >>
+
+If your Redis sentinel server requires authentication, you can use the 
+C<< sentinels_username >> attribute to specify the optional username to 
+authenticate as.
+
 =head3 C<< password >>
 
 If your Redis server requires authentication, you can use the C<< password >>
 attribute. After each established connection (at the start or when
 reconnecting), the Redis C<< AUTH >> command will be send to the server. If the
 password is wrong, an exception will be thrown and reconnect will be disabled.
+
+=head3 C<< sentinels_password >>
+
+If your Redis sentinel server requires authentication, you can use the 
+C<< sentinels_password >> attribute to specify the password. 
 
 =head3 C<< on_connect >>
 
